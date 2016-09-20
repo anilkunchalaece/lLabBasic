@@ -1,6 +1,7 @@
 
 --Author : Kunchala Anil
 --Email : anilkunchalaece@gmail.com
+
 -- After Saving this file in NodeMcu using Esplorer run the file using dofile('dthSample.lua')
 -- https://nodemcu.readthedocs.io/en/master/en/modules/dht/
 --http://www.barissanli.com/electronics/nodemcu.php
@@ -37,7 +38,7 @@ function connectToWifi(_ssid,_pswd)
 	elseif status == 5 then
 		print("STA_GOTIP")
 		print(wifi.sta.getip())
-		wifi.sta.autoconnect(1) -- we need to disable auto connect Idont why.. But it is not working without it
+		wifi.sta.autoconnect(1)
 		return true
 	end --end elseif Statements
 return false
@@ -57,7 +58,8 @@ end
 --First send the supply to the Sensor Via GPIO output
 gpio.mode(moistureSensorEnable,gpio.OUTPUT)
 gpio.write(moistureSensorEnable,gpio.HIGH)
-print("Moisture Value: "..adc.read(0))
+moistureValue = adc.read(0)
+print("Moisture Value: "..moistureValue)
 gpio.write(moistureSensorEnable,gpio.LOW)
 
 --read the Atmosphere Humidy and Temp
@@ -76,8 +78,21 @@ end
 --First send the supply to the Sensor Via GPIO output
 gpio.mode(ldrEnable,gpio.OUTPUT)
 gpio.write(ldrEnable,gpio.HIGH)
-print("ldr Reading: "..adc.read(0))
+ldrValue = adc.read(0)
+print("ldr Reading: "..ldrValue)
 gpio.write(ldrEnable,gpio.LOW)
+
+data = 'mois='..moistureValue..'&temp='..temp..'&humi='..humi.."&ldr="..ldrValue
+print(data)
+
+http.request("http://pamda1ver2.16mb.com/sensorData.php", "POST", "Content-Type: application/x-www-form-urlencoded\r\n",data, 
+  function(code, data)
+    if (code < 0) then
+      print("HTTP request failed")
+    else
+      print(code, data)
+    end
+  end)
 
 --disconnect the Wifi
 --wifi.sta.disconnect()
