@@ -85,7 +85,8 @@ gpio.write(ldrEnable,gpio.LOW)
 data = 'mois='..moistureValue..'&temp='..temp..'&humi='..humi.."&ldr="..ldrValue
 print(data)
 
-http.request("http://pamda1ver2.16mb.com/sensorData.php", "POST", "Content-Type: application/x-www-form-urlencoded\r\n",data, 
+--http.request("http://pamda1ver2.16mb.com/sensorData.php", "POST", "Content-Type: application/x-www-form-urlencoded\r\n",data, 
+http.request("http://ksrmced.in/sensorData.php", "POST", "Content-Type: application/x-www-form-urlencoded\r\n",data, 
   function(code, data)
     if (code < 0) then
       print("HTTP request failed")
