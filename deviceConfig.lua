@@ -33,19 +33,16 @@ max_trails - D_MXT - 5
 
 ]]
 
-
-
-
-
-
 --initialize the Pins
 P_LDR = 0 -- LDR
 P_SMS = 1 -- Soil Moisture Sensor
 P_DTH = 2 -- for humidity and Temp
-P_RLY = 3 -- To Control the Water supply Motor
+--Pin 3 not yet Used
 P_SLED_R = 4 -- Status Led Red pin
 P_SLED_G = 5 -- Status Led Green
 P_SLED_B = 6 -- Status Led Blue
+P_RLY = 7  -- To Control the Water supply Motor
+P_SPB = 8 -- To Change into STATION to AP Mode 
 
 --Sensor Parameters as const
 S_ATI = "10"
@@ -55,11 +52,12 @@ S_SMS = "0DS"
 S_LUM = "0DL"
 
 --led status code
-E_NORMAL = "010" --Green
-E_CONF = "100" -- Red
-E_WIFI = "001" -- Blue
-E_SENSOR = "101" -- Red + Blue
-E_UPLOAD = "011" -- Green + Blue 
+E_NORMAL = "010" --Green --Everything OK
+E_CONF = "100" -- Red -- configuration Error
+E_WIFI = "001" -- Blue -- Wifi Error
+E_SENSOR = "101" -- Red + Blue -- Error in reading sensor Data
+E_UPLOAD = "011" -- Green + Blue  -- Error in Upload
+E_SERVER = "111" -- White Device in Server mode
 E_OFF = "000" -- OFF
 
 --pin configuration
