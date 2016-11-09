@@ -1,0 +1,11 @@
+Adafruit IO and Paho Javascript References
+
+Need to use port no 443 for Websockets from paho client to access Adafruit IO (i Dont know Why)
+
+https://forums.adafruit.com/viewtopic.php?f=56&t=83911#p423669
+
+https://learn.adafruit.com/adafruit-io/mqtt-api#connection-details
+
+https://github.com/adafruit/io-issues/issues/74
+
+
