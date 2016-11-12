@@ -1,7 +1,8 @@
-do
+--Author : Kunchala Anil
+--Date : Nov 12 2016
 -- init mqtt client with keepalive timer 120sec
-m = mqtt.Client("anil", 30*60, "anilkunchalaece", "APIKEY")
-
+m = mqtt.Client("anil1",0,"anilkunchalaece","e996656b9fe54f9fa298816e1fb9398f")
+gpio.mode(3,gpio.OUTPUT)
 m:on("connect", function(client) print ("connected") end)
 m:on("offline", function(client) print ("offline") end)
 
@@ -10,6 +11,13 @@ m:on("message", function(client, topic, data)
   print(topic .. ":" ) 
   if data ~= nil then
     print(data)
+    if data == "ON" then 
+    gpio.write(3,gpio.LOW)
+    elseif data == "OFF" then
+    gpio.write(3,gpio.HIGH)
+    else
+    print("invalid command")
+    end
   end
 end)
 
@@ -28,4 +36,4 @@ m:subscribe("anilkunchalaece/feeds/rly",0, function(client) print("subscribe suc
 --m:publish("/topic","hello",0,0, function(client) print("sent") end)
 
 --m:close();
-end
+
