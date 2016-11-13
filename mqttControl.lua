@@ -3,47 +3,65 @@ m = mqtt.Client("anil1",0,Q_ID,Q_KEY)
 m:on("connect", function(client) print ("connected") end)
 m:on("offline", function(client) print ("offline") end)
 
+pMessage = '{"deviceid": "761467","data": {  ' --string to publish the data to the cloud
+
 -- on publish message receive event
 m:on("message", function(client, topic, data) 
   			print(topic .. ":" ) 
   				if data ~= nil then
     					print(data)
-					
-    					if data == "M_PON" then 
-    					--switch in the relay	
-					gpio.write(P_RLY,gpio.LOW)
-					--publish the message back to mqtt broker
-					m:publish(Q_PSTATUS,"M_PON",0,0,function print("published the M_PON message") end )
-						
-    					elseif data == "M_POFF" then
-						--switch off the Relay
-    						gpio.write(P_RLY,gpio.HIGH)
-                                        	--publish the message back to the broker
-						m:publish(Q_PSTATUS,"M_POFF",0,0,function print("published the M_PON message") end )
 
-    					elseif data == "RPSTATUS" then
-						local pStatus = gpio.read(p_RLY)
-						if pStatus == 0 then
-							pStatus == M_PON
-						elseif pStatus == 1 then
-							pStatus == M-POFF
-						end
+					data = cjson.decode(data) --decode the json string
+										
+					if not data["deviceId"] then
+						print(data["deviceId"])
+					end --end of deviceId if
 					
-    						print("sent the Status"..pStatus)
-    					elseif data == "RALL" then
-						dofile("readSensorData.lua")
+					if not data["command"] then
+						cmd = command
+						print("Recvd Cmd is"..cmd)
+					end --end of command if
+					
+					if cmd == M_TEMP or cmd == M_HUM or cmd == M_SMS or cmd == M_LUM or cmd == M_ALL then
+						dofile("readSensorData.lua") -- run the file to get the Data
 						
+						if cmd == M_TEMP then
+							pMessage = pMessage..'"RTEMP":'..tempValue
+						if cmd == M_HUM then
+							pMessage = pMessage..'"RHUM":'..humiValue
+						elseif cmd == M_SMS then
+							pMessage = pMessage..'"RSMS":'..moistureValue
+						elseif cmd == M_LUM then
+							pMessage = pMessage..'"RLUM":'..ldrValue
+						elseif cmd =="RALL" then
+							pMessage = pMessage..'"RTEMP":'..tempValue..','..'"RTEMP":'..tempValue..','..'"RSMS":'..moistureValue..','..'"RLUM":'..ldrValue..','..'"RHUM":'..humiValue
+						end
+					elseif cmd == M_PON or cmd == M_POFF or cmd == M_PSTATUS then
+						if cmd == M_PON then
+							gpio.write(P_RLY,gpio.LOW)--switch on the relay
+							pMessage = pMessage..','..'"RPSTATUS":"ON"'..'}}'
+						elseif cmd == M_POFF then
+							gpio.write(P_RLY,gpio.HIGH)
+							pMessage = pMessage..'.'..'"RPSTATUS":"OFF"'..'}}'
+						elseif cmd == M_PSTAYUS then
+							rState = gpio.read(P_RLY)
+							if rState == 0 then
+								 pMessage = pMessage..','..'"RPSTATUS":"ON"'..'}}'
+							elseif rState == 1 then
+								 pMessage = pMessage..'.'..'"RPSTATUS":"OFF"'..'}}'
+							end
+						end
 					end
- 				 end
-end)
+			       end
+		end)
 
 
 -- for TLS: m:connect("192.168.11.118", secure-port, 1)
 m:connect(Q_HST,Q_PRT, Q_ARC, function(client) 
 					print("connected")
 					--once connected subscribe to topic
-					-- subscribe topic with qos = 0
-					m:subscribe(Q_FED,Q_QOS, function(client) print("subscribe success") end)
+					-- subscribe topic <Q_SFD> with qos = 0
+					m:subscribe(Q_SFD,Q_QOS, function(client) print("subscribe success") end)
  					end, 
  
                              function(client, reason) 
