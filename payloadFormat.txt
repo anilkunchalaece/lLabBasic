@@ -1,7 +1,7 @@
 Payload format for sending data from device to web clients. 
 
 {
-  "deviceid": "45678",  // required
+  "deviceid": "761467",  // required
   "data": {             // one or many corresponding to command
     "RTEMP": "35",
     "RHUM": "89",
