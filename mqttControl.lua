@@ -3,18 +3,18 @@ m = mqtt.Client("anil1",0,Q_ID,Q_KEY)
 m:on("connect", function(client) print ("connected") end)
 m:on("offline", function(client) print ("offline") end)
 
-pMessage = '{"deviceid": "761467","data": {  ' --string to publish the data to the cloud
+--pMessage = '{"deviceid":'.. node.chipid()..',"data": {  ' --string to publish the data to the cloud
 
 -- on publish message receive event
 m:on("message", function(client, topic, data) 
   			print(topic .. ":" ) 
   				if data ~= nil then
     					print(data)
-
+					pMessage = '{"deviceid":'.. node.chipid()..',"data": {  ' --string to publish the data to the cloud
 					data = cjson.decode(data) --decode the json string
 										
-					if data["deviceId"] then
-						print(data["deviceId"])
+					if data["deviceid"] then
+						print(data["deviceid"])
 					end --end of deviceId if
 					
 					if data["command"] then
@@ -53,7 +53,7 @@ m:on("message", function(client, topic, data)
 							end
 						end
 					end
-			        m:publish(Q_PFD,pMessage,0,0, function(client) print("sent") end)
+			        m:publish(Q_PFD,pMessage,0,0, function(client) print("sent"..pMessage) end)
 				end
 		end)
 

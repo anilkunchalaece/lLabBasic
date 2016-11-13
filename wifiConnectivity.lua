@@ -43,7 +43,7 @@ if not wifi.sta.getip() then
 	wifi.setmode(wifi.STATION)
 while(not connectToWifi(D_SSD,D_PWD)) do
 	print("Trying to connect to Local Wifi") --debug
-  D_MXT = DMXT -1
+  D_MXT = D_MXT -1
   if D_MXT ==0 then
     setLedStatus(E_WIFI)
     break
