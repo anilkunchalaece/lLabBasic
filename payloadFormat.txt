@@ -1,0 +1,19 @@
+Payload format for sending data from device to web clients. 
+
+{
+  "deviceid": "45678",  // required
+  "data": {             // one or many corresponding to command
+    "RTEMP": "35",
+    "RHUM": "89",
+    "RSMS": "12",
+    "RLUM": "358",
+    "PSTATUS": "ON/OFF" // current pump status either on or off
+  }
+}
+
+Command format received from web clients
+
+{
+  "deviceid": "45678",
+  "command": "RTEMP"
+}
