@@ -26,16 +26,16 @@ m:on("message", function(client, topic, data)
 						dofile("readSensorData.lua") -- run the file to get the Data
 						
 						if cmd == M_TEMP then
-							pMessage = pMessage..'"RTEMP":'..tempValue..'}}'
+							pMessage = pMessage..'"'..M_TEMP..'":'..tempValue..'}}'
 							print(pMessage)
 						elseif cmd == M_HUM then
-							pMessage = pMessage..'"RHUM":'..humiValue..'}}'
+							pMessage = pMessage..'"'..M_HUM..'":'..humiValue..'}}'
 						elseif cmd == M_SMS then
-							pMessage = pMessage..'"RSMS":'..moistureValue'}}'
+							pMessage = pMessage..'"'..M_SMS..'":'..moistureValue'}}'
 						elseif cmd == M_LUM then
-							pMessage = pMessage..'"RLUM":'..ldrValue'}}'
+							pMessage = pMessage..'"'..M_LUM..'":'..ldrValue'}}'
 						elseif cmd =="RALL" then
-							pMessage = pMessage..'"RTEMP":'..tempValue..','..'"RTEMP":'..tempValue..','..'"RSMS":'..moistureValue..','..'"RLUM":'..ldrValue..','..'"RHUM":'..humiValue..'}}'
+							pMessage = pMessage..'"'..M_TEMP..'":'..tempValue..','..'"'..M_SMS'":'..moistureValue..','..'"'..M_LUM..'":'..ldrValue..','..'"'..M_HUM..'":'..humiValue..'}}'
 						end
 					elseif cmd == M_PON or cmd == M_POFF or cmd == M_PSTATUS then
 						if cmd == M_PON then
