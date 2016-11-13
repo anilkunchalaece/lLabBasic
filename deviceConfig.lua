@@ -187,7 +187,7 @@ end
 if not devConfigTable['Q_ID'] then
   Q_ID = devConfigTable['Q_ID']
 else
-  Q_ID = "anilkunchalece"
+  Q_ID = "anilkunchalaece"
 end
 
 if not devConfigTable['Q_PRT'] then
@@ -202,10 +202,16 @@ else
   Q_ARC = 0
 end
 
-if not devConfigTable['Q_FED'] then
-  Q_FED = devConfigTable['Q_FED']
+if not devConfigTable['Q_PFD'] then
+  Q_PFD = devConfigTable['Q_PFD']
 else
-  Q_FED = "anilkunchalaece"
+  Q_PFD = "anilkunchalaece/feeds/data"
+end
+
+if not devConfigTable['Q_SFD'] then
+  Q_SFD = devConfigTable['Q_SFD']
+else
+  Q_SFD = 'anilkunchalaece/feeds/command'
 end
 
 if not devConfigTable['Q_QOS'] then

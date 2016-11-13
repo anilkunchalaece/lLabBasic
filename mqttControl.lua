@@ -13,12 +13,12 @@ m:on("message", function(client, topic, data)
 
 					data = cjson.decode(data) --decode the json string
 										
-					if not data["deviceId"] then
+					if data["deviceId"] then
 						print(data["deviceId"])
 					end --end of deviceId if
 					
-					if not data["command"] then
-						cmd = command
+					if data["command"] then
+						cmd = data["command"]
 						print("Recvd Cmd is"..cmd)
 					end --end of command if
 					
@@ -26,15 +26,16 @@ m:on("message", function(client, topic, data)
 						dofile("readSensorData.lua") -- run the file to get the Data
 						
 						if cmd == M_TEMP then
-							pMessage = pMessage..'"RTEMP":'..tempValue
+							pMessage = pMessage..'"RTEMP":'..tempValue..'}}'
+							print(pMessage)
 						elseif cmd == M_HUM then
-							pMessage = pMessage..'"RHUM":'..humiValue
+							pMessage = pMessage..'"RHUM":'..humiValue..'}}'
 						elseif cmd == M_SMS then
-							pMessage = pMessage..'"RSMS":'..moistureValue
+							pMessage = pMessage..'"RSMS":'..moistureValue'}}'
 						elseif cmd == M_LUM then
-							pMessage = pMessage..'"RLUM":'..ldrValue
+							pMessage = pMessage..'"RLUM":'..ldrValue'}}'
 						elseif cmd =="RALL" then
-							pMessage = pMessage..'"RTEMP":'..tempValue..','..'"RTEMP":'..tempValue..','..'"RSMS":'..moistureValue..','..'"RLUM":'..ldrValue..','..'"RHUM":'..humiValue
+							pMessage = pMessage..'"RTEMP":'..tempValue..','..'"RTEMP":'..tempValue..','..'"RSMS":'..moistureValue..','..'"RLUM":'..ldrValue..','..'"RHUM":'..humiValue..'}}'
 						end
 					elseif cmd == M_PON or cmd == M_POFF or cmd == M_PSTATUS then
 						if cmd == M_PON then
@@ -52,7 +53,7 @@ m:on("message", function(client, topic, data)
 							end
 						end
 					end
-			        m:publish(Q_PFD,pMessage,0,0, function(client) print("sent" ..pMessage ) end)
+			        m:publish(Q_PFD,pMessage,0,0, function(client) print("sent") end)
 				end
 		end)
 
@@ -69,10 +70,6 @@ m:connect(Q_HST,Q_PRT, Q_ARC, function(client)
 					print("failed reason: "..reason) 
 					end)
 
--- Calling subscribe/publish only makes sense once the connection
--- was successfully established. In a real-world application you want
--- move those into the 'connect' callback or make otherwise sure the 
--- connection was established.
 
 -- subscribe topic with qos = 0
 --m:subscribe(Q_FED,Q_QOS, function(client) print("subscribe success") end)
