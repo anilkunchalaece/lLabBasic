@@ -60,6 +60,16 @@ E_UPLOAD = "011" -- Green + Blue  -- Error in Upload
 E_SERVER = "111" -- White Device in Server mode
 E_OFF = "000" -- OFF
 
+--MQTT commands received from web
+M_TEMP = "RTEMP" -- Read temp used to get instantaneous temp value
+M_HUM = "RHUM" -- read instantaneous humidity
+M_SMS = "RSMS" -- read instantaneous soil moisture sensor
+M_LUM = "RLUM" -- read instantaneous Ldr value
+M_ALL = "RALL" -- read all sensor values
+M_PON = "CPON" -- power on relay
+M_POFF = "CPOFF" -- power off relay
+M_PSTATUS = "RPSTATUS" -- read the relay status 
+
 --pin configuration
 --DTH is not defined here since it uses one wire communication with DTH Library
 --since both ldr and soil moisture sensor are analog sensors P_LDR and P_SMS are 
@@ -161,10 +171,58 @@ else
   D_MXT = "5"
 end
 
-setLedStatus(E_NORMAL)
-print('Configuration Suceesful')
+
+if not devConfigTable['Q_HST'] then
+  Q_HST = devConfigTable['Q_HST']
+else
+  Q_HST = "io.adafruit.com"
 end
 
+if not devConfigTable['Q_KEY'] then
+  Q_KEY = devConfigTable['Q_KEY']
+else
+  Q_KEY = "e996656b9fe54f9fa298816e1fb9398f"
+end
+
+if not devConfigTable['Q_ID'] then
+  Q_ID = devConfigTable['Q_ID']
+else
+  Q_ID = "anilkunchalece"
+end
+
+if not devConfigTable['Q_PRT'] then
+  Q_PRT = devConfigTable['Q_PRT']
+else
+  Q_PRT = "1883"
+end
+
+if not devConfigTable['Q_ARC'] then
+  Q_ARC = devConfigTable['Q_ARC']
+else
+  Q_ARC = 0
+end
+
+if not devConfigTable['Q_FED'] then
+  Q_FED = devConfigTable['Q_FED']
+else
+  Q_FED = "anilkunchalaece"
+end
+
+if not devConfigTable['Q_QOS'] then
+  Q_QOS = devConfigTable['Q_QOS']
+else
+  Q_QOS = 1
+end
+
+setLedStatus(E_NORMAL)
+print('Configuration Suceesful')
+
+end --end of sourceConfigFile() function
+
+
+------------------------------------------
+--Code execution starts from Here
+-----------------------------------------
 setLedStatus(E_OFF)
 sourceFile = nil
 --To read the file and Print its Contents
