@@ -9,3 +9,10 @@ https://learn.adafruit.com/adafruit-io/mqtt-api#connection-details
 https://github.com/adafruit/io-issues/issues/74
 
 
+WS VS WSS
+
+https://github.com/eclipse/paho.mqtt.javascript/issues/88
+
+http://www.eclipse.org/paho/files/jsdoc/symbols/Paho.MQTT.Client.html#path
+
+useSSL : true in Connect Properties
