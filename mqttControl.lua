@@ -27,7 +27,7 @@ m:on("message", function(client, topic, data)
 						
 						if cmd == M_TEMP then
 							pMessage = pMessage..'"RTEMP":'..tempValue
-						if cmd == M_HUM then
+						elseif cmd == M_HUM then
 							pMessage = pMessage..'"RHUM":'..humiValue
 						elseif cmd == M_SMS then
 							pMessage = pMessage..'"RSMS":'..moistureValue
@@ -52,7 +52,8 @@ m:on("message", function(client, topic, data)
 							end
 						end
 					end
-			       end
+			        m:publish(Q_PFD,pMessage,0,0, function(client) print("sent" ..pMessage ) end)
+				end
 		end)
 
 
