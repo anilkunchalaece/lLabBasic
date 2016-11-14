@@ -2,26 +2,26 @@
 //Email : anilkunchalaece@gmail.com
 //php code to Get the Data from Post Request send from Node Mcu and Save it in the Database
 //site : padma1ver2.16mb.com
-
 <?php
 echo "Hello Anil";
+date_default_timezone_set('Asia/Kolkata');
 
-echo 'moisture Value';
+//echo 'moisture Value';
 $mois =  $_POST['mois'];
 
-echo 'temp Value';
+//echo 'temp Value';
 $temp = $_POST['temp'];
 
-echo 'humidity';
+//echo 'humidity';
 $humi =  $_POST['humi'];
 
-echo 'ldr Value';
+//echo 'ldr Value';
 $ldr = $_POST['ldr'];
 
-echo $mois;
-echo $temp;
-echo $humi;
-echo $ldr;
+//echo $mois;
+//echo $temp;
+//echo $humi;
+//echo $ldr;
 
 
 $serverName = "mysql.hostinger.in";
