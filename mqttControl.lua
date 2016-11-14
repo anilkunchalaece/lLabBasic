@@ -1,3 +1,19 @@
+--[[
+Author : Kunchala Anil
+Email : anilkunchalaece@gmail.com
+Date : 14 Nov 2016
+This File is used to subscribe and publish mqtt messages from the adafruit IO
+we need to subscribe to the mqtt topic : SFD -> Subscribe Feed data
+            publish to the mqtt topic : PFD -> Publish feed data
+
+The receivec data will be in the form
+"deviceid":"123456","command":"RTEMP"
+ this is the shorted version of json.. since adafruit IO giving me the error if the string is in Json format
+ I need to add the starting and ending curly brackets to it
+
+ to piublish data format is
+ "deviceid":"123456",data:{"RTEMP":"30"}
+]]
 
 --function used for pcall to decode the received string
 function decodeReceivedData()
@@ -50,8 +66,6 @@ function processCmdAndPublish()
         end
       end
       m:publish(Q_PFD,pMessage,0,0, function(client) print("sent"..pMessage) end)
-    end
-
   end --end of function processCmdAndPublish
 
 --------------------------------------------------
@@ -65,18 +79,20 @@ m:on("offline", function(client) print ("offline") end)
 
 -- on publish message receive event
 m:on("message", function(client, topic, data)
-print(topic .. ":" )
-if data ~= nil then
-  print(data)
-  pMessage = '"deviceid":'.. node.chipid()..',"data": {  ' --string initialization to publish the data to the cloud
-  --data = cjson.decode(data)-- replaced with function to catch any errors
-  --pcall is used for error handling
-  if pcall(decodeReceivedData) then
-      processCmdAndPublish()
-      else
-      print("Unable to decode the Json Command Received"..data)
-      end -- end for pcall function
-      end)
+                          print(topic .. ":" )
+                          if data ~= nil then
+                            print(data)
+                            pMessage = '"deviceid":'.. node.chipid()..',"data": {  ' --string initialization to publish the data to the cloud
+                            --data = cjson.decode(data)-- replaced with function to catch any errors
+                            --pcall is used for error handling
+                            if pcall(decodeReceivedData) then
+                              processCmdAndPublish()
+                            else
+                              print("Unable to decode the Json Command Received"..data)
+                            end -- end for pcall function
+                          end
+                end)
+
 --for TLS: m:connect("192.168.11.118", secure-port, 1)
 m:connect(Q_HST,Q_PRT, Q_ARC, function(client)
                                 print("connected")
