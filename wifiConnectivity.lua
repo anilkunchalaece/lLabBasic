@@ -5,21 +5,19 @@ Email : anilkunchalaece@gmail.com
 
 this is is used to Check the wifi connectivity if it will try for D_MXT trails
 
-]]
 --WIFI PARAMETERS from deviceConfig file
-D_SSD = "KSRMINNOVATION" --ssid
-D_PWD = "DG-HR3420" --pswd
-D_MXT = 5 --max trails to try connection 
+D_SSD , D_PWD , D_MXT
+]]
 
 function connectToWifi(_ssid,_pswd)
-	
+
 	wifi.sta.config(_ssid,_pswd)
 	wifi.sta.connect()
 	status = wifi.sta.status()
-	
-	if status == 0 then 
+
+	if status == 0 then
 		print("STA_IDLE")
-		
+
 	elseif status == 1 then
 		print("STA_CONNECTING")
 	elseif status == 2 then
@@ -37,7 +35,10 @@ function connectToWifi(_ssid,_pswd)
 	end --end elseif Statements
 return false
 end -- end the connectToWifi() Function
-	
+
+----------------------------------------------------
+--Code Starts from here
+----------------------------------------------------
 if not wifi.sta.getip() then
   print("Setting Wifi into Station Mode") --debug
 	wifi.setmode(wifi.STATION)
@@ -51,4 +52,5 @@ while(not connectToWifi(D_SSD,D_PWD)) do
 	end
 else
   setLedStatus(E_OFF)
-end 
+	print("connected to wifi with Ip"..wifi.sta.getip())
+end

@@ -4,6 +4,7 @@ Email : anilkunchalaece
 Date : 14 Nov 2016
 
 To generate the lua compile files
+source : https://smartarduino.gitbooks.io/development-of-nodemcu/content/subsection_41_initlua.html
 ]]
 
 print("\n")
