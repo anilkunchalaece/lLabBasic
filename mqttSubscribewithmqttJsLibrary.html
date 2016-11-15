@@ -1,0 +1,28 @@
+<script src="mqtt.js"> </script>
+<script> console.log("hello")</script>
+<script>
+var url = 'wss://io.adafruit.com:443/mqtt/';
+var    username = 'anilkunchalaece';
+var  aio_key = 'e996656b9fe54f9fa298816e1fb9398f';
+var  topic = 'anilkunchalaece/feeds/data';
+
+var client = mqtt.connect(url, {
+  username: username,
+  password: aio_key
+ });
+
+client.on('connect', function() {
+  console.log("cpnnection sucess");
+  client.subscribe(topic);
+
+});
+
+client.on('error', function(e) {
+  console.log('ERROR: ' + e + '\n');
+});
+
+client.on('message', function(topic, payload) {
+  console.log('RECEIVED: ' + payload + '\n');
+});
+
+</script>
