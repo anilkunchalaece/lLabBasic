@@ -97,6 +97,7 @@ gpio.mode(P_RLY,gpio.OUTPUT)
 gpio.mode(P_SLED_R,gpio.OUTPUT)
 gpio.mode(P_SLED_G,gpio.OUTPUT)
 gpio.mode(P_SLED_B,gpio.OUTPUT)
+gpio.mode(P_SPB,gpio.INT)
 
 function setLedStatus(status)
 gpio.write(P_SLED_R,tonumber(status:sub(1,1)))
