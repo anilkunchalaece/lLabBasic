@@ -38,7 +38,7 @@ function processCmdAndPublish(data)
       elseif cmd == M_SMS then
         pMessage = pMessage..'"'..M_SMS..'":'..moistureValue..'}'
       elseif cmd == M_LUM then
-        pMessage = pMessage..'"'..M_LUM..'":'..ldrValue'}'
+        pMessage = pMessage..'"'..M_LUM..'":'..ldrValue..'}'
       elseif cmd =="RALL" then
         pMessage = pMessage..'"'..M_TEMP..'":'..tempValue..','..'"'..M_SMS..'":'..moistureValue..','..'"'..M_LUM..'":'..ldrValue..','..'"'..M_HUM..'":'..humiValue..'}'
       end
@@ -63,8 +63,9 @@ function processCmdAndPublish(data)
   else
     print("received Invalid Command"..cmd)
     pMessage = pMessage..'}'--send the Null 
+    end
     m:publish(Q_PFD,pMessage,0,0, function(client) print("sent"..pMessage) end)
-  end
+  
 end --end of function processCmdAndPublish
 
 --------------------------------------------------
@@ -72,7 +73,7 @@ end --end of function processCmdAndPublish
 --------------------------------------------------
 
 --init mqtt client with keepalive timer 0 - means not stop
-m = mqtt.Client("anil",0,Q_ID,Q_KEY)
+m = mqtt.Client("anil4",0,Q_ID,Q_KEY)
 m:on("connect", function(client) print ("connected") end)
 m:on("offline", function(client) print ("offline") end)
 
