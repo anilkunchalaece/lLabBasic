@@ -1,4 +1,4 @@
-update=Wed Nov 16 16:37:55 2016
+update=Wed Nov 16 17:26:45 2016
 version=1
 last_client=kicad
 [pcbnew]
@@ -60,3 +60,13 @@ LibName28=contrib
 LibName29=valves
 LibName30=/home/ksrmce/Desktop/kicad-lib-master/nodemcu
 LibName31=/home/ksrmce/Desktop/w_relay
+[schematic_editor]
+version=1
+PageLayoutDescrFile=layoutDesign.kicad_wks
+PlotDirectoryName=
+SubpartIdSeparator=0
+SubpartFirstId=65
+NetFmtName=Pcbnew
+SpiceForceRefPrefix=0
+SpiceUseNetNumbers=0
+LabSize=60
