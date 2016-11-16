@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav role="navigation">
+            <div class="nav-wrapper container">
+                <a id="logo-container" href="#" class="brand-logo">KSRM/IC</a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="#">Navbar Link</a></li>
+                    <li><a href="#">Navbar Link</a></li>
+                    <li><a href="#">Navbar Link</a></li>
+                </ul>
+                <ul id="nav-mobile" class="side-nav">
+                    <li><a href="#">Navbar Link</a></li>
+                    <li><a href="#">Navbar Link</a></li>
+                    <li><a href="#">Navbar Link</a></li>
+                </ul>
+                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container" ng-app="iotaApp">
+        <ul class="collapsible popout collapsible-accordion" data-collapsible="accordion" ng-controller="DevicesController">
+            <li class="">
+                <div class="collapsible-header"><i class="material-icons">subtitles</i>About the Project</div>
+                <div class="collapsible-body" style="display: none;">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+            </li>
+            <li class="">
+                <div class="collapsible-header"><i class="material-icons">games</i>Live Data from Devices</div>
+                <div class="collapsible-body" style="display: none;">
+                    <div class="row" style="margin: 10px">
+                        <div class="col s12 m6 l5">
+                            <!--
+                            <select class="browser-default" ng-model="selectedDevice" ng-options="device.description for device in devices track by device.deviceid"></select>
+                            <label>Select Device</label>
+                            -->
+                            <div>
+                                <ul id="devicedropdown" class="dropdown-content">
+                                    <li ng-repeat="device in devices"><a href="#!" ng-click="selectDevice($index)">{{device.description}}</a></li>
+                                </ul>
+                                <a class="btn dropdown-button" href="#!" data-activates="devicedropdown">Select Device<i class="mdi-navigation-arrow-drop-down right"></i></a>
+                            </div>
+                            <ul class="collection with-header">
+                                <li class="collection-header"><h6><span class="red-text accent-4">{{selectedDevice.description}}</span></h6></li>
+                                <li class="collection-item">Device Id: {{selectedDevice.deviceid}}</li>
+                                <li class="collection-item">Model: {{selectedDevice.model}}</li>
+                                <li class="collection-item">Location: {{selectedDevice.location}}</li>
+                            </ul>
+
+
+                        </div>
+                        <div class="col s12 m6 l7" >
+							<table>
+                                <thead>
+                                    <tr>
+                                        <td colspan="3"><h6>Live data from: <span class="red-text accent-4">{{selectedDevice.description}}</span></h6></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Connection Status:</td>
+                                        <td>{{connectionStatus}}</td>
+                                        <td>
+                                            <div>
+                                                <a ng-click="connectToMessageService()" href="">
+                                                    <i class="small material-icons tooltipped" data-position="top" data-delay="50" data-tooltip="Connect to Msg Server" ng-show="connectionStatus=='Not Connected'">play_circle_filled</i>
+                                                    <i class="small material-icons tooltipped" data-position="top" data-delay="50" data-tooltip="Disconnect from Msg Server" ng-show="connectionStatus=='Connected'">pause_circle_filled</i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Temperature</td>
+                                        <td>
+                                            <div class="progress" ng-show="currentTemperature=='...'">
+                                                <div class="indeterminate"></div>
+                                            </div>
+                                            <div ng-hide="currentTemperature=='...'">{{currentTemperature}}</div>
+                                        </td>
+                                        <td><a ng-click="sendCommand('RTEMP')" ng-show="connectionStatus=='Connected'" href=""><i class="small material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Refresh Temperature" ng-hide="currentTemperature=='...'">replay</i></a></td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>Humidity</td>
+                                        <td>
+                                            <div class="progress" ng-show="currentHumidity=='...'">
+                                                <div class="indeterminate"></div>
+                                            </div>
+                                            <div ng-hide="currentHumidity=='...'">{{currentHumidity}}</div>
+                                        </td>
+                                        <td><a ng-click="sendCommand('RHUM')" ng-show="connectionStatus=='Connected'" href=""><i class="small material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Refresh Humidity"  ng-hide="currentHumidity=='...'">replay</i></a></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Soil Moisture</td>
+                                        <td>
+                                            <div class="progress" ng-show="currentSoilMoisture=='...'">
+                                                <div class="indeterminate"></div>
+                                            </div>
+                                            <div ng-hide="currentSoilMoisture=='...'">{{currentSoilMoisture}}</div>
+                                        </td>
+                                        <td><a ng-click="sendCommand('RSMS')" ng-show="connectionStatus=='Connected'" href=""><i class="small material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Refresh Soil Moisture" ng-hide="currentSoilMoisture=='...'">replay</i></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Luminance</td>
+                                        <td>
+                                            <div class="progress" ng-show="currentLuminance=='...'">
+                                                <div class="indeterminate"></div>
+                                            </div>
+                                            <div ng-hide="currentLuminance=='...'">{{currentLuminance}}</div>
+                                        </td>
+                                        <td><a ng-click="sendCommand('RLUM')" ng-show="connectionStatus=='Connected'" href=""><i class="small material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Refresh Luminance"  ng-hide="currentLuminance=='...'">replay</i></a></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Punp Status</td>
+                                        <td>
+                                            <div class="progress" ng-show="currentPumpStatus=='...'">
+                                                <div class="indeterminate"></div>
+                                            </div>
+                                            <div ng-hide="currentPumpStatus=='...'">{{currentPumpStatus}}</div>
+                                        </td>
+                                        <td><a ng-click="sendCommand('RPSTATUS')" ng-show="connectionStatus=='Connected'" href=""><i class="small material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Refresh Pump Status"  ng-hide="currentPumpStatus=='...'">replay</i></a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!--
+                            <ul class="collection with-header">
+                                <li class="collection-header"><h6><span class="red-text accent-4">{{selectedDevice.description}}</span></h6></li>
+                                <li class="collection-item">Temperature: <span class="red-text accent-4">{{currentTemperature}}</span><span style="cursor: pointer" class="badge" ng-click="sendCommand('RTEMP')" ng-show="connectionStatus=='Connected'">Update</span></li>
+                                <li class="collection-item">Humidity: <span class="red-text accent-4">{{currentHumidity}}</span><span style="cursor: pointer" class="badge" ng-click="sendCommand('RHUM')" ng-show="connectionStatus=='Connected'">Update</span></li>
+                                <li class="collection-item">Soil Moisture: <span class="red-text accent-4">{{currentSoilMoisture}}</span><span style="cursor: pointer" class="badge" ng-click="sendCommand('RSMS')" ng-show="connectionStatus=='Connected'">Update</span></li>
+                                <li class="collection-item">Luminance: <span class="red-text accent-4">{{currentLuminance}}</span><span style="cursor: pointer" class="badge" ng-click="sendCommand('RLUM')" ng-show="connectionStatus=='Connected'">Update</span></li>
+                                <li class="collection-item">Pump Status: <span class="red-text accent-4">{{currentPumpStatus}}</span><span style="cursor: pointer" class="badge" ng-click="sendCommand('RPSTATUS')" ng-show="connectionStatus=='Connected'">Update</span></li>
+                            </ul>
+                            -->
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="">
+                <div class="collapsible-header"><i class="material-icons">games</i>Historical Data</div>
+                <div class="collapsible-body" style="display: none;"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div>
+            </li>
+            
+        </ul>
+    </main>
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Footer Content</h5>
+                    <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Links</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2014 Copyright Text
+                <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
+        </div>
+
+    </footer>
+    <!--Import jQuery before materialize.js-->
+    <script src="scripts/jquery-3.1.1.min.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js" type="text/javascript"></script>-->
+    <script src="scripts/mqtt.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script src="scripts/angular.min.js"></script>
+    <script src="app/iota.js"></script>
+    
+    <script>
+        
+    </script>
+</body>
+</html>
+
