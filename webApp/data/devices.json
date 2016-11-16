@@ -1,0 +1,14 @@
+﻿[
+  {
+    "deviceid": "761467",
+    "description": "MWP 761467",
+    "location": "IC Lab, KSRMCE, Kadapa",
+    "model": "Padma V2"
+  },
+  {
+    "deviceid": "123456",
+    "description": "MWP 123456",
+    "location": "Field Trial, KSRMCE, Kadapa",
+    "model": "Padma V2"
+  }
+]
