@@ -15,58 +15,74 @@ The receivec data will be in the form
  "deviceid":"123456",data:{"RTEMP":"30"}
 ]]
 
-
---function to process the receivedcommand.
-function processCmdAndPublish(data)
+function checkDeviceId(data)
   if data["deviceid"] then
     print(data["deviceid"])
   end --end of deviceId if
+end -- end of funtion
 
+function checkCommand(data)
   if data["command"] then
     cmd = data["command"]
     print("Recvd Cmd is"..cmd)
-    --end of command if
+  end
+end
 
-    if cmd == M_TEMP or cmd == M_HUM or cmd == M_SMS or cmd == M_LUM or cmd == M_ALL then
-      dofile("readSensorData.lua") -- run the file to get the Data
 
-      if cmd == M_TEMP then
-        pMessage = pMessage..'"'..M_TEMP..'":'..tempValue..'}'
-        print(pMessage)
-      elseif cmd == M_HUM then
-        pMessage = pMessage..'"'..M_HUM..'":'..humiValue..'}'
-      elseif cmd == M_SMS then
-        pMessage = pMessage..'"'..M_SMS..'":'..moistureValue..'}'
-      elseif cmd == M_LUM then
-        pMessage = pMessage..'"'..M_LUM..'":'..ldrValue..'}'
-      elseif cmd =="RALL" then
-        pMessage = pMessage..'"'..M_TEMP..'":'..tempValue..','..'"'..M_SMS..'":'..moistureValue..','..'"'..M_LUM..'":'..ldrValue..','..'"'..M_HUM..'":'..humiValue..'}'
-      end
+function processSensorReadingCommands()
+  dofile("readSensorData.lua") -- run the file to get the Data
+  if cmd == M_TEMP then
+    pMessage = pMessage..'"'..M_TEMP..'":'..tempValue..'}'
+    print(pMessage)
+  elseif cmd == M_HUM then
+    pMessage = pMessage..'"'..M_HUM..'":'..humiValue..'}'
+  elseif cmd == M_SMS then
+    pMessage = pMessage..'"'..M_SMS..'":'..moistureValue..'}'
+  elseif cmd == M_LUM then
+    pMessage = pMessage..'"'..M_LUM..'":'..ldrValue..'}'
+  elseif cmd =="RALL" then
+    pMessage = pMessage..'"'..M_TEMP..'":'..tempValue..','..'"'..M_SMS..'":'..moistureValue..','..'"'..M_LUM..'":'..ldrValue..','..'"'..M_HUM..'":'..humiValue..'}'
+  end
+end --end of function
 
-    elseif cmd == M_PON or cmd == M_POFF or cmd == M_PSTATUS then
-      if cmd == M_PON then
-        gpio.write(P_RLY,gpio.LOW)--switch on the relay
-        pMessage = pMessage..'"RPSTATUS":"ON"'..'}'
-      elseif cmd == M_POFF then
-        gpio.write(P_RLY,gpio.HIGH)
-        pMessage = pMessage..'"RPSTATUS":"OFF"'..'}'
-      elseif cmd == M_PSTATUS then
+
+function processPumpCommands()
+  if cmd == M_PON then
+    gpio.write(P_RLY,gpio.LOW)--switch on the relay
+    pMessage = pMessage..'"RPSTATUS":"ON"'..'}'
+  elseif cmd == M_POFF then
+    gpio.write(P_RLY,gpio.HIGH)
+    pMessage = pMessage..'"RPSTATUS":"OFF"'..'}'
+  elseif cmd == M_PSTATUS then
+      if D_POP == "1" then
         rState = gpio.read(P_RLY)
-        if rState == 0 then
-          pMessage = pMessage..'"RPSTATUS":"ON"'..'}'
-        elseif rState == 1 then
-          pMessage = pMessage..'"RPSTATUS":"OFF"'..'}'
-        end
+          if rState == 0 then
+              pMessage = pMessage..'"RPSTATUS":"ON"'..'}'
+          elseif rState == 1 then
+              pMessage = pMessage..'"RPSTATUS":"OFF"'..'}'
+          end
+      else
+        pMessage = pMessage..'"RPSTATUS" : "NO PUMP"'..'}'
       end
     end
+  end --end of function
 
+
+
+--function to process the receivedcommand.
+function processCmdAndPublish(data)
+  checkDeviceId(data)
+  checkCommand(data)
+    if cmd == M_TEMP or cmd == M_HUM or cmd == M_SMS or cmd == M_LUM or cmd == M_ALL then
+      processSensorReadingCommands()
+    elseif cmd == M_PON or cmd == M_POFF or cmd == M_PSTATUS then
+        processPumpCommands()
   else
     print("received Invalid Command"..cmd)
     pMessage = pMessage..'}'--send the Null
-    end
+  end
     m:publish(Q_PFD,pMessage,0,0, function(client) print("sent"..pMessage) end)
-
-end --end of function processCmdAndPublish
+  end --end of function processCmdAndPublish
 
 --------------------------------------------------
 --Code Starts from Here

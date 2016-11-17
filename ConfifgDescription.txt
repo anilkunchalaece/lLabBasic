@@ -7,6 +7,7 @@ Config.json Descrptions :
           "D_CDT" : Current Date and time
           "D_SID" : session ID
           "D_SUP" : session Up time
+          "D_POP" : Pump Option for device (1-Pump Installed  0-Not installed)
 
           "D_SSD" : wifi SSID
           "D_PWD" : wifi password

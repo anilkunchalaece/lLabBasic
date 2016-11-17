@@ -9,6 +9,8 @@
           "D_SSD" : "KSRMINNOVATION",
           "D_PWD" : "DG-HR3420",
           "D_MXT" : "5",
+          "D_POP" : "1",
+          "D_DPI" : 10,
 	        "Q_HST" : "io.adafruit.com",
           "Q_KEY" : "e996656b9fe54f9fa298816e1fb9398f",
           "Q_UID"  : "anilkunchalaece",
@@ -16,6 +18,6 @@
           "Q_ARC" :  0 ,
           "Q_PFD" : "anilkunchalaece/feeds/data",
 	        "Q_SFD" : "anilkunchalaece/feeds/command",
-          "Q_QOS" : 0,
-          "D_DPI" : 10,
+          "Q_QOS" : 0
+
 }

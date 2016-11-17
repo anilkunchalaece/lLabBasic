@@ -112,7 +112,6 @@ end
 
 function loadSourceConfigFile()
 
-
    jsonString = ''
  print("loading "..sourceFile.." File")--for Debug
 file.open(sourceFile,'r')
@@ -132,102 +131,107 @@ file.open(sourceFile,'r')
  --Device Parameters
 D_ID = node.chipid(); -- chip Id
 
-if not devConfigTable['D_VER'] then
+if devConfigTable['D_VER'] then
   D_VER = devConfigTable['D_VER']
 else
   D_VER = "NA"
 end
 
-if not devConfigTable['D_LON'] then
+if devConfigTable['D_LON'] then
   D_LON = devConfigTable['D_LON']
-
 else
   D_LON = "0"
 end
 
-if not devConfigTable['D_LAT'] then
+if devConfigTable['D_LAT'] then
   D_LAT = devConfigTable['D_LAT']
 else
   D_LAT = "0"
 end
 
-if not devConfigTable['D_CDT'] then
+if devConfigTable['D_CDT'] then
   D_CDT = devConfigTable['D_CDT']
 else
   D_CDT = "300920162009" --DDMMYYYYHHMM
 end
 
-if not devConfigTable['D_SID'] then
+if devConfigTable['D_SID'] then
   D_SID = devConfigTable['D_SID']
 else
   D_SID = "KSRMINNOVATION"
 end
 
-if not devConfigTable['D_PWD'] then
+if devConfigTable['D_PWD'] then
   D_PWD = devConfigTable['D_PWD']
 else
   D_PWD = "DG-HR3420"
 end
 
-if not devConfigTable['D_MXT'] then
+if devConfigTable['D_MXT'] then
   D_MXT = devConfigTable['D_MXT']
 else
   D_MXT = "5"
 end
 
 
-if not devConfigTable['Q_HST'] then
+if devConfigTable['Q_HST'] then
   Q_HST = devConfigTable['Q_HST']
 else
   Q_HST = "io.adafruit.com"
 end
 
-if not devConfigTable['Q_KEY'] then
+if devConfigTable['Q_KEY'] then
   Q_KEY = devConfigTable['Q_KEY']
 else
   Q_KEY = "e996656b9fe54f9fa298816e1fb9398f"
 end
 
-if not devConfigTable['Q_UID'] then
+if devConfigTable['Q_UID'] then
   Q_UID = devConfigTable['Q_UID']
 else
   Q_UID = "anilkunchalaece"
 end
 
-if not devConfigTable['Q_PRT'] then
+if devConfigTable['Q_PRT'] then
   Q_PRT = devConfigTable['Q_PRT']
 else
   Q_PRT = "1883"
 end
 
-if not devConfigTable['Q_ARC'] then
+if devConfigTable['Q_ARC'] then
   Q_ARC = devConfigTable['Q_ARC']
 else
   Q_ARC = 0
 end
 
-if not devConfigTable['Q_PFD'] then
+if devConfigTable['Q_PFD'] then
   Q_PFD = devConfigTable['Q_PFD']
 else
   Q_PFD = "anilkunchalaece/feeds/data"
 end
 
-if not devConfigTable['Q_SFD'] then
+if devConfigTable['Q_SFD'] then
   Q_SFD = devConfigTable['Q_SFD']
 else
   Q_SFD = 'anilkunchalaece/feeds/command'
 end
 
-if not devConfigTable['Q_QOS'] then
+if devConfigTable['Q_QOS'] then
   Q_QOS = devConfigTable['Q_QOS']
 else
   Q_QOS = 1
 end
 
-if not devConfigTable['D_DPI'] then
+if devConfigTable['D_DPI'] then
   D_DPI = devConfigTable['D_DPI']
 else
   D_DPI = 10 --Default interval to post sensorData in Min
+end
+
+if devConfigTable['D_POP'] then
+  D_POP = devConfigTable['D_POP']
+else
+  D_POP = 0 --Default value for Pump Options
 end
 
 setLedStatus(E_NORMAL)
