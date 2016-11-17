@@ -31,6 +31,9 @@ ssid       - D_SSD - KSRMINNOVATION
 password   - D_PWD - DG-HR3420
 max_trails - D_MXT - 5
 
+--device parameters
+D_DPI --> Post data interval to server via http
+
 ]]
 
 --initialize the Pins
@@ -185,10 +188,10 @@ else
   Q_KEY = "e996656b9fe54f9fa298816e1fb9398f"
 end
 
-if not devConfigTable['Q_ID'] then
-  Q_ID = devConfigTable['Q_ID']
+if not devConfigTable['Q_UID'] then
+  Q_UID = devConfigTable['Q_UID']
 else
-  Q_ID = "anilkunchalaece"
+  Q_UID = "anilkunchalaece"
 end
 
 if not devConfigTable['Q_PRT'] then
@@ -221,10 +224,10 @@ else
   Q_QOS = 1
 end
 
-if not devConfigTable['P_INT'] then
-  P_INT = devConfigTable['P_INT']
+if not devConfigTable['D_DPI'] then
+  D_DPI = devConfigTable['D_DPI']
 else
-  P_INT = 10 --Default interval to post sensorData in Min
+  D_DPI = 10 --Default interval to post sensorData in Min
 end
 
 setLedStatus(E_NORMAL)

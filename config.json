@@ -11,11 +11,11 @@
           "D_MXT" : "5",
 	        "Q_HST" : "io.adafruit.com",
           "Q_KEY" : "e996656b9fe54f9fa298816e1fb9398f",
-          "Q_ID"  : "anilkunchalaece",
+          "Q_UID"  : "anilkunchalaece",
           "Q_PRT" : "1883",
           "Q_ARC" :  0 ,
           "Q_PFD" : "anilkunchalaece/feeds/data",
 	        "Q_SFD" : "anilkunchalaece/feeds/command",
           "Q_QOS" : 0,
-          "P_INT" : 10
+          "D_DPI" : 10,
 }

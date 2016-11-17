@@ -1,0 +1,26 @@
+Config.json Descrptions :
+
+{
+          "D_VER" : Device Version
+          "D_LON" : Longitude
+          "D_LAT" : Latitude
+          "D_CDT" : Current Date and time
+          "D_SID" : session ID
+          "D_SUP" : session Up time
+
+          "D_SSD" : wifi SSID
+          "D_PWD" : wifi password
+          "D_MXT" : wifi Max Tries
+          "D_DPI" : Duration to publish data to server via http in Minutes
+
+	        "Q_HST" : Mqtt Broker URI
+          "Q_KEY" : Password or API Key
+          "Q_UID"  : User Id for mqtt Broker
+          "Q_PRT" : mqtt port
+          "Q_ARC" : Mqtt Client auto Reconnect option
+
+          "Q_PFD" : Mqtt Publish Feed topic
+	        "Q_SFD" : Mqtt Subscribe feed Topic
+          "Q_QOS" : QoS for Mqtt Publish
+
+}

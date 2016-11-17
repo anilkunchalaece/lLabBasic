@@ -62,10 +62,10 @@ function processCmdAndPublish(data)
 
   else
     print("received Invalid Command"..cmd)
-    pMessage = pMessage..'}'--send the Null 
+    pMessage = pMessage..'}'--send the Null
     end
     m:publish(Q_PFD,pMessage,0,0, function(client) print("sent"..pMessage) end)
-  
+
 end --end of function processCmdAndPublish
 
 --------------------------------------------------
@@ -73,7 +73,7 @@ end --end of function processCmdAndPublish
 --------------------------------------------------
 
 --init mqtt client with keepalive timer 0 - means not stop
-m = mqtt.Client("anil4",0,Q_ID,Q_KEY)
+m = mqtt.Client("anil4",0,Q_UID,Q_KEY)
 m:on("connect", function(client) print ("connected") end)
 m:on("offline", function(client) print ("offline") end)
 
@@ -98,7 +98,7 @@ m:on("message", function(client, topic, data)
     else
       print("data is null")
     end
-  end 
+  end
 )
 
 --for TLS: m:connect("192.168.11.118", secure-port, 1)

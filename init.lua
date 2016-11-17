@@ -28,7 +28,7 @@ tmr.alarm(0, 1*60*1000, tmr.ALARM_AUTO, function()
                                             dofile("wifiConnectivity.lua")
                                             end)
 
-tmr.alarm(1,P_INT*60*1000,tmr.ALARM_AUTO,function()
+tmr.alarm(1,D_DPI*60*1000,tmr.ALARM_AUTO,function()
                                           print("sending the data to the Sever")
                                           dofile("postData.lua")
                                         end)
@@ -49,7 +49,3 @@ dofile("deviceConfig.lua")
 checkForServerConfig()
 addFunctionality()
 addSchedulars()
-
-
-
-
