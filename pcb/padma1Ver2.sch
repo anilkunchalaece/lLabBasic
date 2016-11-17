@@ -30,6 +30,7 @@ LIBS:contrib
 LIBS:valves
 LIBS:nodemcu
 LIBS:w_relay
+LIBS:padma1Ver2-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268

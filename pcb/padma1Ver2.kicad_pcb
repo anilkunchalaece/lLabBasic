@@ -5,7 +5,7 @@
     (no_connects 0)
     (area 143.459999 81.229999 176.580001 149.910001)
     (thickness 1.6)
-    (drawings 7)
+    (drawings 8)
     (tracks 165)
     (zones 0)
     (modules 15)
@@ -740,6 +740,9 @@
       (net 40 "Net-(R3-Pad1)"))
   )
 
+  (gr_text "Padma1Ver2 -  KSRMCE\nKunchala Anil" (at 166.37 83.185) (layer F.SilkS)
+    (effects (font (size 1 1) (thickness 0.25)))
+  )
   (gr_line (start 143.51 81.28) (end 143.51 82.55) (angle 90) (layer Edge.Cuts) (width 0.1))
   (gr_line (start 143.51 82.55) (end 143.51 81.28) (angle 90) (layer Edge.Cuts) (width 0.1))
   (gr_line (start 143.51 81.28) (end 143.51 82.55) (angle 90) (layer Edge.Cuts) (width 0.1))

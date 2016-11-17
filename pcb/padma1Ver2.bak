@@ -30,7 +30,6 @@ LIBS:contrib
 LIBS:valves
 LIBS:nodemcu
 LIBS:w_relay
-LIBS:padma1Ver2-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
@@ -486,4 +485,14 @@ NoConn ~ 5100 3900
 NoConn ~ 5100 3800
 NoConn ~ 5100 3300
 NoConn ~ 4200 4000
+Text Label 3950 1800 0    60   ~ 0
+signal
+Text Label 4900 1850 0    60   ~ 0
+power
+Text Label 3850 2350 0    60   ~ 0
+signal
+Text Label 4950 2500 0    60   ~ 0
+power
+Text Label 5400 3000 0    60   ~ 0
+signal
 $EndSCHEMATC
