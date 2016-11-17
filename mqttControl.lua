@@ -15,15 +15,15 @@ The receivec data will be in the form
  "deviceid":"123456",data:{"RTEMP":"30"}
 ]]
 
-function checkDeviceId(data)
-  if data["deviceid"] then
-    print(data["deviceid"])
+function checkDeviceId(dataId)
+  if dataId["deviceid"] then
+    print(dataId["deviceid"])
   end --end of deviceId if
 end -- end of funtion
 
-function checkCommand(data)
-  if data["command"] then
-    cmd = data["command"]
+function checkCommand(dataCmd)
+  if dataCmd["command"] then
+    cmd = dataCmd["command"]
     print("Recvd Cmd is"..cmd)
   end
 end
