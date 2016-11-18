@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="D">
+  <design>
+    <source>/home/ksrmce/Documents/lLabBasic/pcb/padma1Ver2.sch</source>
+    <date>Fri Nov 18 10:33:52 2016</date>
+    <tool>Eeschema 4.0.2+dfsg1-stable</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>padma1Ver2.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="R3">
+      <value>R</value>
+      <footprint>Resistors_ThroughHole:Resistor_Horizontal_RM10mm</footprint>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>582C3672</tstamp>
+    </comp>
+    <comp ref="10k1">
+      <value>R</value>
+      <footprint>Resistors_ThroughHole:Resistor_Horizontal_RM10mm</footprint>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>582C36F9</tstamp>
+    </comp>
+    <comp ref="D2">
+      <value>D</value>
+      <footprint>Diodes_ThroughHole:Diode_DO-35_SOD27_Horizontal_RM10</footprint>
+      <libsource lib="device" part="D"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>582C376F</tstamp>
+    </comp>
+    <comp ref="2n3906">
+      <value>Q_PNP_BCE</value>
+      <footprint>TO_SOT_Packages_THT:TO-92_Molded_Wide</footprint>
+      <libsource lib="device" part="Q_PNP_BCE"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>582C37C4</tstamp>
+    </comp>
+    <comp ref="SW1">
+      <value>SPST</value>
+      <footprint>Buttons_Switches_SMD:SW_SPST_EVPBF</footprint>
+      <libsource lib="device" part="SPST"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>582C382D</tstamp>
+    </comp>
+    <comp ref="D1">
+      <value>D</value>
+      <footprint>Diodes_ThroughHole:Diode_DO-35_SOD27_Horizontal_RM10</footprint>
+      <libsource lib="device" part="D"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>582C3A72</tstamp>
+    </comp>
+    <comp ref="LDR1">
+      <value>CONN_01X04</value>
+      <footprint>Pin_Headers:Pin_Header_Straight_1x04</footprint>
+      <libsource lib="conn" part="CONN_01X04"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>582C3F02</tstamp>
+    </comp>
+    <comp ref="MOIS1">
+      <value>CONN_01X04</value>
+      <footprint>Pin_Headers:Pin_Header_Straight_1x04</footprint>
+      <libsource lib="conn" part="CONN_01X04"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>582C3F9A</tstamp>
+    </comp>
+    <comp ref="DTH1">
+      <value>CONN_01X04</value>
+      <footprint>Pin_Headers:Pin_Header_Straight_1x04</footprint>
+      <libsource lib="conn" part="CONN_01X04"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>582C4013</tstamp>
+    </comp>
+    <comp ref="Grovr1">
+      <value>RLY</value>
+      <footprint>Pin_Headers:Pin_Header_Straight_1x04</footprint>
+      <libsource lib="conn" part="CONN_01X04"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>582C406C</tstamp>
+    </comp>
+    <comp ref="D3">
+      <value>LED_RCBG</value>
+      <footprint>LEDs:LED-RGB-5MM_Common_Cathode</footprint>
+      <libsource lib="device" part="LED_RCBG"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>582C388A</tstamp>
+    </comp>
+    <comp ref="R4">
+      <value>R</value>
+      <footprint>Resistors_ThroughHole:Resistor_Horizontal_RM10mm</footprint>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>582C8339</tstamp>
+    </comp>
+    <comp ref="R1">
+      <value>R</value>
+      <footprint>Resistors_ThroughHole:Resistor_Horizontal_RM10mm</footprint>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>582C866A</tstamp>
+    </comp>
+    <comp ref="R2">
+      <value>R</value>
+      <footprint>Resistors_ThroughHole:Resistor_Horizontal_RM10mm</footprint>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>582C8997</tstamp>
+    </comp>
+    <comp ref="nodemcu1">
+      <value>nodemcu</value>
+      <footprint>nodemcu:NodeMCU_Amica_R2</footprint>
+      <libsource lib="nodemcu" part="NodeMCU_Amica_R2"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>582C3605</tstamp>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="conn" part="CONN_01X04">
+      <description>Connector 01x04</description>
+      <footprints>
+        <fp>Pin_Header_Straight_1X04</fp>
+        <fp>Pin_Header_Angled_1X04</fp>
+        <fp>Socket_Strip_Straight_1X04</fp>
+        <fp>Socket_Strip_Angled_1X04</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">P</field>
+        <field name="Value">CONN_01X04</field>
+      </fields>
+      <pins>
+        <pin num="1" name="P1" type="passive"/>
+        <pin num="2" name="P2" type="passive"/>
+        <pin num="3" name="P3" type="passive"/>
+        <pin num="4" name="P4" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="device" part="D">
+      <description>Diode</description>
+      <footprints>
+        <fp>Diode_*</fp>
+        <fp>D-Pak_TO252AA</fp>
+        <fp>*SingleDiode</fp>
+        <fp>*_Diode_*</fp>
+        <fp>*SingleDiode*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">D</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="device" part="LED_RCBG">
+      <description>Common Cathode RGB LED</description>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">LED_RCBG</field>
+      </fields>
+      <pins>
+        <pin num="1" name="RED_ANODE" type="passive"/>
+        <pin num="2" name="COMMON_CATHODE" type="passive"/>
+        <pin num="3" name="BLUE_ANODE" type="passive"/>
+        <pin num="4" name="GREEN_ANODE" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="nodemcu" part="NodeMCU_Amica_R2">
+      <description>NodeMCU 0.9</description>
+      <footprints>
+        <fp>Pin_Header_Straight_1X15</fp>
+        <fp>Pin_Header_Angled_1X15</fp>
+        <fp>Socket_Strip_Straight_1X15</fp>
+        <fp>Socket_Strip_Angled_1X15</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">NodeMCU_Amica_R2</field>
+      </fields>
+      <pins>
+        <pin num="1" name="A0" type="BiDi"/>
+        <pin num="2" name="RSV" type="NotConnected"/>
+        <pin num="3" name="RSV" type="NotConnected"/>
+        <pin num="4" name="SD3" type="3state"/>
+        <pin num="5" name="SD2" type="3state"/>
+        <pin num="6" name="SD1" type="3state"/>
+        <pin num="7" name="CMD" type="3state"/>
+        <pin num="8" name="SD0" type="3state"/>
+        <pin num="9" name="CLK" type="power_in"/>
+        <pin num="10" name="GND" type="power_in"/>
+        <pin num="11" name="3V3" type="power_in"/>
+        <pin num="12" name="EN" type="3state"/>
+        <pin num="13" name="RST" type="input"/>
+        <pin num="14" name="GND" type="power_in"/>
+        <pin num="15" name="Vin" type="power_in"/>
+        <pin num="16" name="3V3" type="power_in"/>
+        <pin num="17" name="GND" type="power_in"/>
+        <pin num="18" name="TX" type="3state"/>
+        <pin num="19" name="RX" type="3state"/>
+        <pin num="20" name="D8" type="BiDi"/>
+        <pin num="21" name="D7" type="BiDi"/>
+        <pin num="22" name="D6" type="BiDi"/>
+        <pin num="23" name="D5" type="BiDi"/>
+        <pin num="24" name="GND" type="power_in"/>
+        <pin num="25" name="3V3" type="power_in"/>
+        <pin num="26" name="D4" type="BiDi"/>
+        <pin num="27" name="D3" type="BiDi"/>
+        <pin num="28" name="D2" type="BiDi"/>
+        <pin num="29" name="D1" type="BiDi"/>
+        <pin num="30" name="D0" type="BiDi"/>
+      </pins>
+    </libpart>
+    <libpart lib="device" part="Q_PNP_BCE">
+      <description>Transistor PNP (general)</description>
+      <fields>
+        <field name="Reference">Q</field>
+        <field name="Value">Q_PNP_BCE</field>
+      </fields>
+      <pins>
+        <pin num="1" name="B" type="input"/>
+        <pin num="2" name="C" type="passive"/>
+        <pin num="3" name="E" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="device" part="R">
+      <description>Resistor</description>
+      <footprints>
+        <fp>R_*</fp>
+        <fp>Resistor_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="device" part="SPST">
+      <description>Interrupteur simple</description>
+      <fields>
+        <field name="Reference">SW</field>
+        <field name="Value">SPST</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="input"/>
+        <pin num="2" name="2" type="input"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="conn">
+      <uri>/usr/share/kicad/library/conn.lib</uri>
+    </library>
+    <library logical="device">
+      <uri>/usr/share/kicad/library/device.lib</uri>
+    </library>
+    <library logical="nodemcu">
+      <uri>/home/ksrmce/Desktop/kicad-lib-master/nodemcu.lib</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="Net-(nodemcu1-Pad6)">
+      <node ref="nodemcu1" pin="6"/>
+    </net>
+    <net code="2" name="Net-(R3-Pad1)">
+      <node ref="R3" pin="1"/>
+      <node ref="nodemcu1" pin="21"/>
+      <node ref="SW1" pin="2"/>
+    </net>
+    <net code="3" name="Net-(nodemcu1-Pad4)">
+      <node ref="nodemcu1" pin="4"/>
+    </net>
+    <net code="4" name="Net-(nodemcu1-Pad5)">
+      <node ref="nodemcu1" pin="5"/>
+    </net>
+    <net code="5" name="Net-(nodemcu1-Pad7)">
+      <node ref="nodemcu1" pin="7"/>
+    </net>
+    <net code="6" name="Net-(nodemcu1-Pad8)">
+      <node ref="nodemcu1" pin="8"/>
+    </net>
+    <net code="7" name="Net-(nodemcu1-Pad9)">
+      <node ref="nodemcu1" pin="9"/>
+    </net>
+    <net code="8" name="Net-(nodemcu1-Pad10)">
+      <node ref="nodemcu1" pin="10"/>
+    </net>
+    <net code="9" name="Net-(nodemcu1-Pad11)">
+      <node ref="nodemcu1" pin="11"/>
+    </net>
+    <net code="10" name="Net-(nodemcu1-Pad15)">
+      <node ref="nodemcu1" pin="15"/>
+    </net>
+    <net code="11" name="Net-(nodemcu1-Pad18)">
+      <node ref="nodemcu1" pin="18"/>
+    </net>
+    <net code="12" name="Net-(nodemcu1-Pad24)">
+      <node ref="nodemcu1" pin="24"/>
+    </net>
+    <net code="13" name="Net-(nodemcu1-Pad14)">
+      <node ref="nodemcu1" pin="14"/>
+    </net>
+    <net code="14" name="Net-(nodemcu1-Pad12)">
+      <node ref="nodemcu1" pin="12"/>
+    </net>
+    <net code="15" name="Net-(R1-Pad1)">
+      <node ref="nodemcu1" pin="23"/>
+      <node ref="R1" pin="1"/>
+    </net>
+    <net code="16" name="Net-(2n3906-Pad3)">
+      <node ref="2n3906" pin="3"/>
+      <node ref="Grovr1" pin="1"/>
+    </net>
+    <net code="17" name="Net-(R4-Pad1)">
+      <node ref="nodemcu1" pin="26"/>
+      <node ref="R4" pin="1"/>
+    </net>
+    <net code="18" name="Net-(D3-Pad3)">
+      <node ref="D3" pin="3"/>
+      <node ref="R4" pin="2"/>
+    </net>
+    <net code="19" name="Net-(D1-Pad1)">
+      <node ref="nodemcu1" pin="1"/>
+      <node ref="D2" pin="1"/>
+      <node ref="D1" pin="1"/>
+    </net>
+    <net code="20" name="Net-(D3-Pad4)">
+      <node ref="D3" pin="4"/>
+      <node ref="R1" pin="2"/>
+    </net>
+    <net code="21" name="Net-(D3-Pad1)">
+      <node ref="R2" pin="1"/>
+      <node ref="D3" pin="1"/>
+    </net>
+    <net code="22" name="Net-(R2-Pad2)">
+      <node ref="R2" pin="2"/>
+      <node ref="nodemcu1" pin="22"/>
+    </net>
+    <net code="23" name="Earth">
+      <node ref="Grovr1" pin="4"/>
+      <node ref="R3" pin="2"/>
+      <node ref="DTH1" pin="4"/>
+      <node ref="nodemcu1" pin="17"/>
+      <node ref="D3" pin="2"/>
+      <node ref="MOIS1" pin="4"/>
+      <node ref="LDR1" pin="4"/>
+    </net>
+    <net code="24" name="+3V3">
+      <node ref="2n3906" pin="2"/>
+      <node ref="SW1" pin="1"/>
+      <node ref="nodemcu1" pin="16"/>
+      <node ref="DTH1" pin="3"/>
+      <node ref="Grovr1" pin="3"/>
+    </net>
+    <net code="25" name="Net-(nodemcu1-Pad19)">
+      <node ref="nodemcu1" pin="19"/>
+    </net>
+    <net code="26" name="Net-(nodemcu1-Pad25)">
+      <node ref="nodemcu1" pin="25"/>
+    </net>
+    <net code="27" name="Net-(nodemcu1-Pad20)">
+      <node ref="nodemcu1" pin="20"/>
+    </net>
+    <net code="28" name="Net-(nodemcu1-Pad13)">
+      <node ref="nodemcu1" pin="13"/>
+    </net>
+    <net code="29" name="Net-(nodemcu1-Pad2)">
+      <node ref="nodemcu1" pin="2"/>
+    </net>
+    <net code="30" name="Net-(nodemcu1-Pad3)">
+      <node ref="nodemcu1" pin="3"/>
+    </net>
+    <net code="31" name="Net-(MOIS1-Pad2)">
+      <node ref="MOIS1" pin="2"/>
+    </net>
+    <net code="32" name="Net-(DTH1-Pad2)">
+      <node ref="DTH1" pin="2"/>
+    </net>
+    <net code="33" name="Net-(Grovr1-Pad2)">
+      <node ref="Grovr1" pin="2"/>
+    </net>
+    <net code="36" name="Net-(LDR1-Pad2)">
+      <node ref="LDR1" pin="2"/>
+    </net>
+    <net code="37" name="Net-(10k1-Pad2)">
+      <node ref="nodemcu1" pin="27"/>
+      <node ref="10k1" pin="2"/>
+    </net>
+    <net code="38" name="/signal">
+      <node ref="nodemcu1" pin="28"/>
+      <node ref="D2" pin="2"/>
+      <node ref="DTH1" pin="1"/>
+      <node ref="D1" pin="2"/>
+      <node ref="LDR1" pin="1"/>
+      <node ref="MOIS1" pin="1"/>
+    </net>
+    <net code="39" name="Net-(10k1-Pad1)">
+      <node ref="2n3906" pin="1"/>
+      <node ref="10k1" pin="1"/>
+    </net>
+    <net code="40" name="/power">
+      <node ref="nodemcu1" pin="29"/>
+      <node ref="nodemcu1" pin="30"/>
+      <node ref="MOIS1" pin="3"/>
+      <node ref="LDR1" pin="3"/>
+    </net>
+  </nets>
+</export>

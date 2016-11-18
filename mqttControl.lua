@@ -84,12 +84,16 @@ function processCmdAndPublish(data)
     m:publish(Q_PFD,pMessage,0,0, function(client) print("sent"..pMessage) end)
   end --end of function processCmdAndPublish
 
+
+function getRandomClientId()
+    return Q_UID..math.random(1,100)
+end
 --------------------------------------------------
 --Code Starts from Here
 --------------------------------------------------
 
 --init mqtt client with keepalive timer 0 - means not stop
-m = mqtt.Client("anil4",0,Q_UID,Q_KEY)
+m = mqtt.Client(getRandomClientId,0,Q_UID,Q_KEY)
 m:on("connect", function(client) print ("connected") end)
 m:on("offline", function(client) print ("offline") end)
 
