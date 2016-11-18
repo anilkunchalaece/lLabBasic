@@ -93,7 +93,7 @@ end
 --------------------------------------------------
 
 --init mqtt client with keepalive timer 0 - means not stop
-m = mqtt.Client(getRandomClientId,0,Q_UID,Q_KEY)
+m = mqtt.Client(getRandomClientId(),0,Q_UID,Q_KEY)
 m:on("connect", function(client) print ("connected") end)
 m:on("offline", function(client) print ("offline") end)
 
