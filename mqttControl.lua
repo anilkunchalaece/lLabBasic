@@ -47,24 +47,24 @@ end --end of function
 
 
 function processPumpCommands()
-  if cmd == M_PON then
-    gpio.write(P_RLY,gpio.LOW)--switch on the relay
-    pMessage = pMessage..'"RPSTATUS":"ON"'..'}'
-  elseif cmd == M_POFF then
-    gpio.write(P_RLY,gpio.HIGH)
-    pMessage = pMessage..'"RPSTATUS":"OFF"'..'}'
-  elseif cmd == M_PSTATUS then
-      if D_POP == "1" then
-        rState = gpio.read(P_RLY)
-          if rState == 0 then
-              pMessage = pMessage..'"RPSTATUS":"ON"'..'}'
-          elseif rState == 1 then
-              pMessage = pMessage..'"RPSTATUS":"OFF"'..'}'
-          end
-      else
-        pMessage = pMessage..'"RPSTATUS" : "NO PUMP"'..'}'
+  if D_POP == "1" then
+    if cmd == M_PON then
+      gpio.write(P_RLY,gpio.LOW)--switch on the relay
+      pMessage = pMessage..'"RPSTATUS":"ON"'..'}'
+    elseif cmd == M_POFF then
+      gpio.write(P_RLY,gpio.HIGH)
+      pMessage = pMessage..'"RPSTATUS":"OFF"'..'}'
+    elseif cmd == M_PSTATUS then
+      rState = gpio.read(P_RLY)
+      if rState == 0 then
+        pMessage = pMessage..'"RPSTATUS":"ON"'..'}'
+      elseif rState == 1 then
+        pMessage = pMessage..'"RPSTATUS":"OFF"'..'}'
       end
     end
+  else
+    pMessage = pMessage..'"RPSTATUS" : "NO PUMP"'..'}'
+  end
   end --end of function
 
 
